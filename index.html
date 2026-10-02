@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c30">
+  <title>Hypothesis Studio AI | Product experiment workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">H</span><span>hypothesis<span class="brand-light">studio</span><small>AI experiment workspace</small></span></div>
+      <div class="side-label">WORKSPACE</div>
+      <nav aria-label="Sections">
+        <a href="#frame" class="active"><span>01</span> Frame the bet</a>
+        <a href="#plan"><span>02</span> AI plan</a>
+        <a href="#readout"><span>03</span> Readout</a>
+      </nav>
+      <div class="side-bottom"><span class="signal"></span> Local-first prototype<br><small>Synthetic example data included</small></div>
+    </aside>
+    <main>
+      <header class="topbar"><div class="breadcrumbs">Product lab <span>/</span> Experiments <span>/</span> New decision</div><div class="avatar">PH</div></header>
+      <div class="content">
+        <section class="hero"><div class="eyebrow">FROM IDEA TO EVIDENCE</div><h1>Make the product bet<br><em>testable.</em></h1><p>Turn a customer problem into a measurable experiment, calculate the evidence you need, and write a decision brief that shows its work.</p><div class="hero-tags"><span>AI-assisted planning</span><span>Statistical readout</span><span>Human decision</span></div></section>
+        <div class="notice"><strong>Portfolio prototype</strong><span>All prefilled notes and outcomes are synthetic. AI drafts are suggestions for review; this tool never claims a production launch.</span></div>
+
+        <section id="frame" class="section">
+          <div class="section-heading"><div><span class="section-kicker">01 / DEFINE</span><h2>Frame the bet</h2></div><p>Start with the behavior you want to change.</p></div>
+          <div class="grid two">
+            <div class="card form-card">
+              <label for="problem">Product problem</label><textarea id="problem" rows="4" maxlength="2500">New workspace owners complete signup but often leave before inviting a teammate. We want to test whether a contextual invite step after their first saved project improves collaborative activation.</textarea>
+              <label for="evidence">Evidence notes <span class="hint">One note per line; up to 8</span></label><textarea id="evidence" rows="5">Five synthetic onboarding interviews mention uncertainty about when to invite teammates.
+In a sample funnel, invite completion is the largest drop-off between first project and first collaboration.
+Support notes suggest some users worry an invite will send an email before they are ready.</textarea>
+              <p class="field-note">Notes become E1, E2, and so on. The AI may cite only these IDs.</p>
+            </div>
+            <div class="card form-card">
+              <div class="card-title-row"><div><span class="section-kicker">PRIMARY METRIC</span><h3>Size the experiment</h3></div><span class="badge">Two-sided test</span></div>
+              <div class="field-grid"><div><label for="baseline">Baseline conversion %</label><input id="baseline" type="number" min="0.01" max="99" step="0.1" value="25"></div><div><label for="mde">Minimum detectable lift <span class="hint">percentage points</span></label><input id="mde" type="number" min="0.01" max="50" step="0.1" value="3"></div></div>
+              <div class="number-feature"><span>Required sample per variant</span><strong id="required">—</strong><small>80% power · 5% significance · equal allocation · normal approximation</small></div>
+              <p class="field-note">Use a meaningful minimum effect, not the observed lift, to set sample size before the test.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="plan" class="section">
+          <div class="section-heading"><div><span class="section-kicker">02 / PLAN</span><h2>Draft the decision plan</h2></div><p>Ground the AI in your notes; review every suggestion.</p></div>
+          <div class="card ai-card"><div class="ai-head"><div class="ai-icon">✦</div><div><h3>Local AI copilot</h3><p>Connects to Ollama on your computer. Your notes stay local.</p></div><span class="badge muted">Human review required</span></div><div class="button-row"><button id="generate" class="button primary">Generate with AI <span>↗</span></button><button id="example" class="button secondary">View example plan</button><a class="text-link" href="https://ollama.com/download" target="_blank" rel="noopener noreferrer">Set up Ollama ↗</a></div><p id="ai-status" class="status" aria-live="polite">Use the example plan or start Ollama to generate a new one.</p></div>
+          <div id="plan-output" class="plan-output" hidden><div class="plan-header"><span id="plan-mode" class="section-kicker"></span><span id="plan-model" class="badge"></span></div><div class="grid two"><div class="card"><span class="mini-label">HYPOTHESIS</span><h3 id="out-hypothesis"></h3><p id="out-target"></p><div class="divider"></div><span class="mini-label">PRIMARY METRIC</span><p id="out-metric"></p></div><div class="card"><span class="mini-label">INSTRUMENTATION</span><ul id="out-instrumentation"></ul><div class="divider"></div><span class="mini-label">GUARDRAILS</span><ul id="out-guardrails"></ul></div></div><div class="card evidence-card"><div><span class="mini-label">REASONING & RISKS</span><p id="out-rationale"></p><ul id="out-risks"></ul></div><div><span class="mini-label">EVIDENCE CITED</span><ul id="out-evidence"></ul></div></div></div>
+        </section>
+
+        <section id="readout" class="section">
+          <div class="section-heading"><div><span class="section-kicker">03 / DECIDE</span><h2>Read the result</h2></div><p>Enter actual counts when you have them. Demo counts are synthetic.</p></div>
+          <div class="card form-card"><div class="readout-top"><div><h3>Primary metric</h3><p>Conversion events divided by eligible visitors</p></div><span class="badge">Synthetic example prefilled</span></div><div class="results-grid"><div class="result-group"><span class="mini-label">CONTROL</span><div class="field-grid"><div><label for="control-visitors">Visitors</label><input id="control-visitors" type="number" min="1" step="1" value="3500"></div><div><label for="control-conversions">Conversions</label><input id="control-conversions" type="number" min="0" step="1" value="875"></div></div></div><div class="result-group"><span class="mini-label">VARIANT</span><div class="field-grid"><div><label for="variant-visitors">Visitors</label><input id="variant-visitors" type="number" min="1" step="1" value="3500"></div><div><label for="variant-conversions">Conversions</label><input id="variant-conversions" type="number" min="0" step="1" value="1030"></div></div></div></div><div class="guardrail-row"><div><label for="guardrail">Variant support-contact rate %</label><input id="guardrail" type="number" min="0" max="100" step="0.1" value="3.2"></div><div><label for="guardrail-limit">Maximum allowed %</label><input id="guardrail-limit" type="number" min="0" max="100" step="0.1" value="3.5"></div><p>A simple rollout guardrail. Define its measurement window before a real test.</p></div></div>
+          <div id="readout-output" class="grid three stat-cards"><div class="card stat"><span>CONVERSION</span><strong id="rate-display">—</strong><small id="rate-sub"></small></div><div class="card stat"><span>RELATIVE LIFT</span><strong id="lift-display">—</strong><small id="difference-sub"></small></div><div class="card stat"><span>TWO-SIDED P-VALUE</span><strong id="p-display">—</strong><small id="ci-sub"></small></div></div>
+          <div class="decision-card"><div><span class="section-kicker">RECOMMENDED NEXT STEP</span><h3 id="decision-title">—</h3><p id="decision-reason"></p><p id="stat-warning" class="caution"></p></div><button id="export" class="button light">Export decision brief ↓</button></div>
+          <p id="calculation-error" class="status error" role="alert"></p>
+        </section>
+        <footer>Built as an independent product prototype · AI assistance does not replace experiment design, data-quality review, or product judgment.</footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
